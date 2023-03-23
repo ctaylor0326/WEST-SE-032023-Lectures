@@ -113,11 +113,20 @@ const showBook = (book) => {
   const bookImg = document.createElement("img");
   bookImg.src = book.imageUrl;
 
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.addEventListener("click", () => {
+    console.log("delete button was clicked");
+    bookDiv.remove();
+  });
+
   bookDiv.className = "book";
   bookDiv.append(title);
   bookDiv.append(bookImg);
 
   bookDiv.append(authorP);
+  bookDiv.append(deleteBtn);
+
   booksDiv.append(bookDiv);
 };
 
