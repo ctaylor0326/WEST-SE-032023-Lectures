@@ -94,99 +94,80 @@ const inventory = [
   },
 ];
 
-// ✅ create a formatPrice(price) function that accepts a price (number) as an argument and returns the price formatted as a string.
-// formatPrice(10) => '$10.00'
+// inventory.forEach((book) => {
+//   let p = document.createElement("p");
+//   p.innerText = book.title;
+//   document.body.append(p);
+// });
 
-// ✅ create a blurb() function that accepts a book as an argument and returns a string in the following format:
-// 'Eloquent JavaScript: A Modern Introduction to Programming by Marjin Haverbeke is on sale for $10.00'
+// console.log(inventory);
 
-// ✅ create a variable `highestPricedBook`
+const showBook = (book) => {
+  const bookDiv = document.createElement("div");
+  const title = document.createElement("h3");
+  title.textContent = book.title;
 
-let highestPriceBook = inventory[0];
-// ✅ create a function `findHighestPricedBook` that finds that book and returns it
+  const authorP = document.createElement("p");
+  authorP.textContent = `By: ${book.author}`;
 
-function findHighestPricedBook() {
-  highestPriceBook = inventory[0]; // set to first book
-  for (let i = 1; i < inventory.length; i++) {
-    const highestPriceSoFar = highestPriceBook.price;
-    const thisBook = inventory[i];
+  const bookImg = document.createElement("img");
+  bookImg.src = book.imageUrl;
 
-    if (thisBook.price > highestPriceSoFar) {
-      highestPriceBook = thisBook; // reassign if book has higher price
-    }
-  }
-  return highestPriceBook;
-}
+  bookDiv.className = "book";
+  bookDiv.append(title);
+  bookDiv.append(bookImg);
 
-findHighestPricedBook();
-
-console.log("highestPriceBook", highestPriceBook);
-
-// What is the problem with storing highestPriceBook as a global variable here? What would happen if we added another book of a higher price?
-
-// 💡 Arrow functions vs regular functions // ✅ create an arrow function version of the formatPrice function // After Break
-
-// 💡 Practice using callbacks for iteration
-
-// ✅ Create an array of the prices of all of the books
-
-const getPriceList = () => {
-  // const priceList = [];
-  // for (let i = 0; i < inventory.length; i++) {
-  //   priceList.push(inventory[i].price);
-  // }
-  inventory.forEach((book) => {
-    let p = document.createElement("p");
-    p.innerText = book.title;
-    document.body.append(p);
-  });
-
-  return inventory.map((book) => {
-    return book.title;
-  });
+  bookDiv.append(authorP);
+  booksDiv.append(bookDiv);
 };
 
-console.log(getPriceList());
+const booksDiv = document.querySelector("#books");
 
-// ✅ Create an array of simplified book objects
+inventory.forEach(showBook);
 
-// ✅ Create an array of strings from the inventory in the following format:
-// 'Eloquent JavaScript: A Modern Introduction to Programming by Marjin Haverbeke is on sale for $10.00'
+const header = document.querySelector("#headerTitle");
 
-// 💡 When do I use forEach vs map?
+// console.log(header);
 
-// function hello(first, last) {
-//   console.log(`hello ${first} ${last}`);
-// }
+// header.textContent = "Morgan's Technical Books";
+// header.style.color = "red";
 
-// const hello = (first, last) => {
-//   console.log(`hello ${first} ${last}`);
+// const p = document.querySelector("p");
 
-//   return 15;
-// };
+// p.textContent = "Morgan's Technical Books";
+// p.style.color = "red";
 
-// hello("whatever", "asf");
-// hello("bob");
-// hello("morgan");
-// hello(10);
-// hello();
-
-function makeShow(showToDo) {
-  // make new file
-  // add intro to file
-  // output = showToDo()
-  // add output to file
-  // add outro to file
-  // save file
+function changeText(element, newText, color) {
+  element.textContent = newText;
+  element.style.color = color;
 }
 
-function soloShow() {}
+changeText(header, "This is fun", "purple");
 
-makeShow(() => {
-  // do guest show stuff
-  // return guest show output
-});
-makeShow(() => {
-  // do solo show stuff
-  // return solo show output
-});
+// function updateNumber() {
+//   const numElement = document.querySelector(".magic-number");
+
+//   const numElementText = numElement.textContent;
+
+//   const num = parseInt(numElementText);
+
+//   const newNum = num + 5;
+
+//   // console.log(newNum);
+
+//   numElement.textContent = newNum;
+// }
+
+// const numElement = document.querySelector(".magic-number");
+// numElement.textContent = parseInt(numElement.textContent) + 5;
+
+// numElement.remove();
+
+// querySelector
+// querySelectorAll
+// remove
+// append
+// createElement
+// textContent
+
+// addEventListener
